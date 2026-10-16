@@ -5,7 +5,7 @@ MVP académico que almacena películas consultadas en TMDB, conserva análisis c
 ## Tecnologías
 
 - Node.js 20 o superior y Express 5.
-- MongoDB Atlas o un replica set de MongoDB. La réplica es necesaria para la transacción de eliminación y auditoría.
+- MongoDB Atlas o una instalación local configurada como replica set. La réplica es necesaria para la transacción de eliminación y auditoría.
 - Thunder Client o Postman para la demostración.
 
 ## Puesta en marcha
@@ -16,17 +16,14 @@ MVP académico que almacena películas consultadas en TMDB, conserva análisis c
    npm.cmd install
    ```
 
-2. Elegir una conexión de MongoDB:
+2. Copiar `.env.example` como `.env` y configurar la conexión. En el equipo de demostración, el servicio tradicional de MongoDB ya está configurado como `rs0` y utiliza:
 
-   **Opción local preparada para este proyecto:** abrir Docker Desktop y ejecutar:
-
-   ```powershell
-   docker --config .docker-local compose up -d
+   ```text
+   MONGODB_URI=mongodb://127.0.0.1:27017/?replicaSet=rs0&directConnection=true
+   MONGODB_DB=magic_film
    ```
 
-   El archivo `.env` incluido localmente apunta a `mongodb://127.0.0.1:27018/?directConnection=true`. `compose.yaml` crea un replica set de un nodo con volumen persistente. Se utiliza el puerto `27018` para no interferir con otras instalaciones locales de MongoDB. El archivo `.env` está ignorado por Git.
-
-   **Opción MongoDB Atlas:** copiar `.env.example` como `.env` y reemplazar `MONGODB_URI` con la cadena de conexión:
+   Para utilizar MongoDB Atlas, reemplazar `MONGODB_URI` con su cadena de conexión:
 
    ```powershell
    Copy-Item .env.example .env
@@ -52,7 +49,7 @@ MVP académico que almacena películas consultadas en TMDB, conserva análisis c
    Para revisar la base en MongoDB Compass, conectarse con:
 
    ```text
-   mongodb://127.0.0.1:27018/?directConnection=true
+   mongodb://127.0.0.1:27017/?replicaSet=rs0&directConnection=true
    ```
 
 6. La verificación automatizada opcional ejecuta las diez rutas y confirma la transacción directamente en MongoDB. Como modifica los datos de demostración, se debe volver a ejecutar `npm.cmd run seed` al terminar:
