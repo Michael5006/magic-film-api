@@ -1,0 +1,109 @@
+{
+  "info": {
+    "_postman_id": "magic-film-parcial-2",
+    "name": "Magic Film - Parcial 2",
+    "description": "Diez funcionalidades del MVP en el orden recomendado para la sustentación.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000/api" }
+  ],
+  "item": [
+    {
+      "name": "01 - Registrar usuario",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"usuario_id\": \"U011\",\n  \"nombre\": \"Camila Ordonez\",\n  \"email\": \"camila@correo.com\",\n  \"carrera\": \"Ingenieria de Software\",\n  \"generos_favoritos\": [\n    { \"id\": 878, \"nombre\": \"Ciencia ficcion\" },\n    { \"id\": 18, \"nombre\": \"Drama\" }\n  ]\n}" },
+        "url": "{{baseUrl}}/usuarios",
+        "description": "HU1: registrar perfil académico y gustos. Esperado: 201."
+      }
+    },
+    {
+      "name": "02 - Agregar género favorito",
+      "request": {
+        "method": "PATCH",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"id\": 53,\n  \"nombre\": \"Suspenso\"\n}" },
+        "url": "{{baseUrl}}/usuarios/U011/generos",
+        "description": "HU2: agregar Suspenso sin duplicar. Esperado: 200."
+      }
+    },
+    {
+      "name": "03 - Guardar película en caché",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"titulo\": \"Moneyball\",\n  \"anio\": 2011,\n  \"director\": \"Bennett Miller\",\n  \"generos\": [{ \"id\": 18, \"nombre\": \"Drama\" }],\n  \"duracion\": 133,\n  \"idioma_original\": \"en\",\n  \"poster_path\": \"/9RLnPq3wYSuXOXCoueLyoNZ4RoW.jpg\",\n  \"sinopsis\": \"Análisis estadístico aplicado a la conformación de un equipo deportivo.\"\n}" },
+        "url": "{{baseUrl}}/peliculas/cache/60308",
+        "description": "HU3: caché idempotente de TMDB. Esperado: 201."
+      }
+    },
+    {
+      "name": "04 - Guardar análisis de IA",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"analisis_id\": \"AI011\",\n  \"tmdb_id\": 60308,\n  \"proveedor\": \"OpenRouter\",\n  \"modelo\": \"anthropic/claude-3.5-sonnet\",\n  \"prompt_version\": \"1.2\",\n  \"resultado\": {\n    \"resumen_interpretativo\": \"La obra defiende la decisión basada en datos.\",\n    \"temas\": [\"Analisis de datos\", \"Estadistica aplicada\"],\n    \"valores_formativos\": [\"Pensamiento critico\"],\n    \"carreras_sugeridas\": [\n      { \"carrera\": \"Ingenieria de Software\", \"justificacion\": \"Muestra datos como criterio de decisión.\", \"puntaje\": 87 },\n      { \"carrera\": \"Administracion de Empresas\", \"justificacion\": \"Aborda la gestión de recursos.\", \"puntaje\": 83 }\n    ]\n  },\n  \"tokens_usados\": 1590,\n  \"estado\": \"Completado\"\n}" },
+        "url": "{{baseUrl}}/analisis",
+        "description": "HU4: persistir la respuesta JSON de OpenRouter. Esperado: 201."
+      }
+    },
+    {
+      "name": "05 - Recomendaciones por carrera actual",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/usuarios/U011/recomendaciones",
+        "description": "HU5 corregida: carrera leída del perfil, solo análisis completados y todos los elementos coincidentes. Esperado: 200."
+      }
+    },
+    {
+      "name": "06 - Películas por géneros favoritos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/usuarios/U011/peliculas-por-generos",
+        "description": "HU6: catálogo según géneros del perfil. Esperado: 200."
+      }
+    },
+    {
+      "name": "07 - Historial reciente",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/usuarios/U001/historial?limit=5",
+        "description": "HU7: últimas cinco búsquedas en orden descendente. Esperado: 200."
+      }
+    },
+    {
+      "name": "08 - Valorar análisis",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"valoracion_id\": \"V011\",\n  \"usuario_id\": \"U011\",\n  \"analisis_id\": \"AI011\",\n  \"puntuacion\": 5,\n  \"comentario\": \"El vínculo con los datos quedó bien explicado.\",\n  \"util_para_carrera\": true\n}" },
+        "url": "{{baseUrl}}/valoraciones",
+        "description": "HU8: valoración ligada a la versión AI011. Esperado: 201."
+      }
+    },
+    {
+      "name": "09 - Eliminar y auditar en transacción",
+      "request": {
+        "method": "DELETE",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"admin\": \"admin@magicfilm.com\",\n  \"detalle\": \"Análisis eliminado por valoración baja; se regenerará con el prompt vigente.\"\n}" },
+        "url": "{{baseUrl}}/analisis/AI007",
+        "description": "HU9 corregida: deleteOne e insertOne comparten sesión y transacción. Esperado: 200."
+      }
+    },
+    {
+      "name": "10 - Reporte de modelos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/reportes/modelos",
+        "description": "HU10: comparación de calidad y tokens por modelo. Esperado: 200."
+      }
+    }
+  ]
+}
