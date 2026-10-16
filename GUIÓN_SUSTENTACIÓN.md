@@ -2,15 +2,16 @@
 
 Antes de comenzar:
 
-1. Ejecutar `npm.cmd run seed` para restablecer la demostración.
-2. Ejecutar `npm.cmd start` y dejar visible la terminal.
-3. Abrir MongoDB Compass con `mongodb://127.0.0.1:27017/?replicaSet=rs0&directConnection=true` en las colecciones `analisis_ia` e `historial_admin`.
-4. Importar la colección de Postman y abrir la consola de respuestas.
-5. Ejecutar las solicitudes en el orden numerado. Evitar explicar el código línea por línea.
+1. Abrir la carpeta `magic-film-api` en Visual Studio Code.
+2. Desde la terminal integrada, ejecutar `npm.cmd run seed` para restablecer la demostración.
+3. En la misma terminal, ejecutar `npm.cmd start` y dejarla visible.
+4. Abrir MongoDB Compass manualmente y conectarse con `mongodb://127.0.0.1:27017/?replicaSet=rs0&directConnection=true`.
+5. Abrir Thunder Client en Visual Studio Code e importar `postman/Magic-Film.postman_collection.json` como colección de Postman.
+6. Ejecutar las solicitudes en el orden numerado. Evitar explicar el código línea por línea.
 
 ## Apertura — 0:00 a 0:20
 
-> Magic Film interpreta películas con inteligencia artificial y las relaciona con la carrera y los gustos del usuario. El MVP es una API REST en Node.js con persistencia real en MongoDB. Presentaré diez historias de usuario mediante Postman.
+> Magic Film interpreta películas con inteligencia artificial y las relaciona con la carrera y los gustos del usuario. El MVP es una API REST en Node.js con persistencia real en MongoDB. Presentaré diez historias de usuario mediante Thunder Client.
 
 ## Funcionalidades 1 a 4 — 0:20 a 1:35
 
@@ -53,7 +54,7 @@ Antes de comenzar:
 
 9. **Eliminación y auditoría — `DELETE /api/analisis/AI007`**
    > Como administrador quiero eliminar un análisis deficiente sin perder trazabilidad.
-   Mostrar antes `AI007` en Atlas, ejecutar y refrescar `analisis_ia` e `historial_admin`.
+   Mostrar antes `AI007` en MongoDB Compass, ejecutar y refrescar `analisis_ia` e `historial_admin`.
    > La eliminación y la auditoría pertenecen a una misma transacción: ambas ocurren o ninguna ocurre.
 
 10. **Reporte — `GET /api/reportes/modelos`**
@@ -62,7 +63,7 @@ Antes de comenzar:
 
 ## Cierre — 4:40 a 5:00
 
-> La API usa rutas REST, códigos HTTP coherentes, validación, manejo centralizado de errores, índices y persistencia en MongoDB. Las credenciales permanecen en variables de entorno y el repositorio contiene las historias y la colección de Postman.
+> La API usa rutas REST, códigos HTTP coherentes, validación, manejo centralizado de errores, índices y persistencia en MongoDB. Las credenciales permanecen en variables de entorno y el repositorio contiene las historias y una colección importable en Thunder Client o Postman.
 
 ## Respuestas rápidas a posibles preguntas
 
