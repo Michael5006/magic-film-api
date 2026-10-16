@@ -6,12 +6,14 @@ Antes de comenzar:
 2. Desde la terminal integrada, ejecutar `npm.cmd run seed` para restablecer la demostración.
 3. En la misma terminal, ejecutar `npm.cmd start` y dejarla visible.
 4. Abrir MongoDB Compass manualmente y conectarse con `mongodb://127.0.0.1:27017/?replicaSet=rs0&directConnection=true`.
-5. Abrir Postman Desktop, elegir **Import > Files** e importar `postman/Magic-Film.postman_collection.json`.
+5. En la extensión de Postman para VS Code, iniciar sesión y seleccionar un workspace. Luego pulsar **Import > File** e importar `postman/Magic-Film.postman_collection.json`.
 6. Ejecutar las solicitudes en el orden numerado. Evitar explicar el código línea por línea.
 
 ## Apertura — 0:00 a 0:20
 
 > Magic Film interpreta películas con inteligencia artificial y las relaciona con la carrera y los gustos del usuario. El MVP es una API REST en Node.js con persistencia real en MongoDB. Presentaré diez historias de usuario mediante Postman.
+
+Si la extensión muestra `Could not import collection`, comprobar primero que el selector superior tenga un workspace activo. La extensión necesita un workspace para guardar la colección y no incluye la opción `Raw text` de la aplicación de escritorio.
 
 ## Funcionalidades 1 a 4 — 0:20 a 1:35
 

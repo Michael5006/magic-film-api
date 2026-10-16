@@ -3,7 +3,7 @@
     "_postman_id": "7e959e59-5086-4ac1-a497-dc839720d873",
     "name": "Magic Film - Parcial 2",
     "description": "Diez funcionalidades del MVP en el orden recomendado para la sustentación.",
-    "schema": "https://schema.postman.com/json/collection/v2.1.0/collection.json"
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
     {
