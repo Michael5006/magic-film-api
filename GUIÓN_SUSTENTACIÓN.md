@@ -6,12 +6,12 @@ Antes de comenzar:
 2. Desde la terminal integrada, ejecutar `npm.cmd run seed` para restablecer la demostración.
 3. En la misma terminal, ejecutar `npm.cmd start` y dejarla visible.
 4. Abrir MongoDB Compass manualmente y conectarse con `mongodb://127.0.0.1:27017/?replicaSet=rs0&directConnection=true`.
-5. Abrir Thunder Client en Visual Studio Code e importar `postman/Magic-Film.postman_collection.json` como colección de Postman.
+5. Abrir Postman Desktop, elegir **Import > Files** e importar `postman/Magic-Film.postman_collection.json`.
 6. Ejecutar las solicitudes en el orden numerado. Evitar explicar el código línea por línea.
 
 ## Apertura — 0:00 a 0:20
 
-> Magic Film interpreta películas con inteligencia artificial y las relaciona con la carrera y los gustos del usuario. El MVP es una API REST en Node.js con persistencia real en MongoDB. Presentaré diez historias de usuario mediante Thunder Client.
+> Magic Film interpreta películas con inteligencia artificial y las relaciona con la carrera y los gustos del usuario. El MVP es una API REST en Node.js con persistencia real en MongoDB. Presentaré diez historias de usuario mediante Postman.
 
 ## Funcionalidades 1 a 4 — 0:20 a 1:35
 
@@ -63,7 +63,7 @@ Antes de comenzar:
 
 ## Cierre — 4:40 a 5:00
 
-> La API usa rutas REST, códigos HTTP coherentes, validación, manejo centralizado de errores, índices y persistencia en MongoDB. Las credenciales permanecen en variables de entorno y el repositorio contiene las historias y una colección importable en Thunder Client o Postman.
+> La API usa rutas REST, códigos HTTP coherentes, validación, manejo centralizado de errores, índices y persistencia en MongoDB. Las credenciales permanecen en variables de entorno y el repositorio contiene las historias y una colección importable en Postman.
 
 ## Respuestas rápidas a posibles preguntas
 
