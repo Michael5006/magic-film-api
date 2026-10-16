@@ -112,6 +112,3 @@ magic-film-api/
 └── package.json
 ```
 
-## Publicación
-
-Antes de enviar el enlace al profesor, comprobar que `.env` no aparezca en GitHub y que el repositorio sea público. La cadena real de MongoDB nunca debe subirse; solamente se publica `.env.example`.
