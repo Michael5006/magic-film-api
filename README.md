@@ -109,7 +109,6 @@ magic-film-api/
 │   ├── middleware.js
 │   └── server.js
 ├── .env.example
-├── GUIÓN_SUSTENTACIÓN.md
 └── package.json
 ```
 
