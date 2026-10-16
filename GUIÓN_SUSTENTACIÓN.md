@@ -4,7 +4,7 @@ Antes de comenzar:
 
 1. Ejecutar `npm.cmd run seed` para restablecer la demostración.
 2. Ejecutar `npm.cmd start` y dejar visible la terminal.
-3. Abrir MongoDB Atlas en las colecciones `analisis_ia` e `historial_admin`.
+3. Abrir MongoDB Compass con `mongodb://127.0.0.1:27018/?directConnection=true` en las colecciones `analisis_ia` e `historial_admin`.
 4. Importar la colección de Postman y abrir la consola de respuestas.
 5. Ejecutar las solicitudes en el orden numerado. Evitar explicar el código línea por línea.
 

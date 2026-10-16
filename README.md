@@ -24,7 +24,7 @@ MVP académico que almacena películas consultadas en TMDB, conserva análisis c
    docker --config .docker-local compose up -d
    ```
 
-   El archivo `.env` incluido localmente apunta a `mongodb://localhost:27017/?replicaSet=rs0`. `compose.yaml` crea un replica set de un nodo con volumen persistente. El archivo `.env` está ignorado por Git.
+   El archivo `.env` incluido localmente apunta a `mongodb://127.0.0.1:27018/?directConnection=true`. `compose.yaml` crea un replica set de un nodo con volumen persistente. Se utiliza el puerto `27018` para no interferir con otras instalaciones locales de MongoDB. El archivo `.env` está ignorado por Git.
 
    **Opción MongoDB Atlas:** copiar `.env.example` como `.env` y reemplazar `MONGODB_URI` con la cadena de conexión:
 
@@ -48,6 +48,12 @@ MVP académico que almacena películas consultadas en TMDB, conserva análisis c
    ```
 
 5. Verificar `GET http://localhost:3000/api/salud` e importar `postman/Magic-Film.postman_collection.json`.
+
+   Para revisar la base en MongoDB Compass, conectarse con:
+
+   ```text
+   mongodb://127.0.0.1:27018/?directConnection=true
+   ```
 
 6. La verificación automatizada opcional ejecuta las diez rutas y confirma la transacción directamente en MongoDB. Como modifica los datos de demostración, se debe volver a ejecutar `npm.cmd run seed` al terminar:
 
